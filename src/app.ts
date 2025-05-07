@@ -16,7 +16,7 @@ import { gadgetRouter } from './routes/gadget.route.js';
 import { ApiError, ApiResponse } from './utils/index.js';
 
 app.get('/', (req, res) => {
-  res.send('Hello from Railway!');
+  res.send('Server is Alive!');
 });
 app.use(config.BASE_API_URL + '/healthCheck', (req, res) => {
   res.status(200).json(new ApiResponse(200, 'Server Alive!', {}));
