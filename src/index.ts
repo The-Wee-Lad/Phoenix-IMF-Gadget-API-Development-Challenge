@@ -18,6 +18,8 @@ connectToDb()
         .catch(error => {
           console.error('Error:', error);  // Handle any error
         });
+
+
     });
   })
   .catch((err) => {
