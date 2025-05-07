@@ -3,6 +3,7 @@
 A TypeScript-based RESTful API for managing **gadgets** and **user accounts**, built for secure operations like lifecycle management and controlled self-destruction. Includes full user authentication and session handling.
 
 ## Live-Link 
+
 Database is Deployed at Supabase, and Api at Render.
 [This is Live link for Api](https://phoenix-imf-gadget-api-development-9v8b.onrender.com)
 
@@ -11,7 +12,8 @@ Database is Deployed at Supabase, and Api at Render.
 ## 📬 Postman Collection
 
 Import and test all endpoints using the official Postman collection:
-[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://www.postman.com/payload-participant-73420966/workspace/the-wee-lad-public-workspace/collection/40788084-4083b8be-9f13-43ec-a767-7f7c0f19a095?action=share&creator=40788084&active-environment=40788084-e4e66640-3fbc-43f6-a930-3b861f6afc56)
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 100px; height: 28px;">](https://www.postman.com/payload-participant-73420966/workspace/the-wee-lad-public-workspace/collection/40788084-4083b8be-9f13-43ec-a767-7f7c0f19a095?action=share&creator=40788084&active-environment=40788084-e4e66640-3fbc-43f6-a930-3b861f6afc56)
+
 ---
 
 ## 📦 API Endpoints
