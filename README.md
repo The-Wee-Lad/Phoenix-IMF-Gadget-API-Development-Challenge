@@ -3,6 +3,8 @@
 A TypeScript-based RESTful API for managing **gadgets** and **user accounts**, built for secure operations like lifecycle management and controlled self-destruction. Includes full user authentication and session handling.
 
 ## Live-Link 
+Database is Deployed at Supabase, and Api at Render.
+[This is Live link for Api](https://phoenix-imf-gadget-api-development-9v8b.onrender.com)
 
 ---
 
