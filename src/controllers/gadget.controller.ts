@@ -21,7 +21,7 @@ const getGadgets = asyncHandler(async (req: Request, res: Response) => {
   )
     filter.status = status;
   const result: (Gadget & { probabilty?: string })[] =
-    await prismaClient.gadgets.findMany({ where: filter });
+    await prismaClient.gadget.findMany({ where: filter });
   result.forEach((element, index) => {
     element.probabilty = `${generateNumber()}% success probability`;
     result[index] = element;
@@ -30,7 +30,7 @@ const getGadgets = asyncHandler(async (req: Request, res: Response) => {
 });
 
 const addNewGadget = asyncHandler(async (req: Request, res: Response) => {
-  const newGadget = await prismaClient.gadgets.create({
+  const newGadget = await prismaClient.gadget.create({
     data: {
       name: generateName(),
     },
@@ -43,7 +43,7 @@ const addNewGadget = asyncHandler(async (req: Request, res: Response) => {
 const updateGadget = asyncHandler(async (req: Request, res: Response) => {
   let { gadgetId, name, status } = req.body;
 
-  const gadget = await prismaClient.gadgets.findUnique({
+  const gadget = await prismaClient.gadget.findUnique({
     where: { id: gadgetId },
   });
   if (!gadget) throw new ApiError(400, 'No such Gadget Exists', 'DB_004');
@@ -51,11 +51,11 @@ const updateGadget = asyncHandler(async (req: Request, res: Response) => {
   name = name || gadget.name;
   if (
     !status ||
-    !(status in ['Available', 'Deployed', 'Destroyed', 'Decommissioned'])
+    !(['Available', 'Deployed', 'Destroyed', 'Decommissioned'].includes(status))
   )
     status = gadget.status;
 
-  const updated = await prismaClient.gadgets.update({
+  const updated = await prismaClient.gadget.update({
     data: {
       status: status,
       name: name,
@@ -70,14 +70,14 @@ const updateGadget = asyncHandler(async (req: Request, res: Response) => {
 
 const decommissionGadget = asyncHandler(async (req: Request, res: Response) => {
   let gadgetId = req.body.gadgetId as string;
-  const gadget = await prismaClient.gadgets.findUnique({
+  const gadget = await prismaClient.gadget.findUnique({
     where: { id: gadgetId },
   });
   if (!gadget) throw new ApiError(400, 'No such Gadget Exists', 'DB_004');
   if (gadget.status === 'Decommissioned')
     throw new ApiError(409, 'Alredy Decommissioned', 'DB_009');
 
-  const updated = await prismaClient.gadgets.update({
+  const updated = await prismaClient.gadget.update({
     data: {
       status: 'Decommissioned',
       decommissonedAt: new Date(Date.now()),
@@ -96,7 +96,7 @@ const selfDestructSequence = asyncHandler(
   async (req: Request, res: Response) => {
     const confirmationCode = req.body.confirmationCode;
     const gadgetId = req.params.id;
-    const gadget = await prismaClient.gadgets.findUnique({
+    const gadget = await prismaClient.gadget.findUnique({
       where: { id: gadgetId },
     });
     if (!gadget) throw new ApiError(400, 'No such Gadget Exists', 'DB_004');
@@ -137,7 +137,7 @@ const selfDestructSequence = asyncHandler(
 const requestSelfDestructSequence = asyncHandler(
   async (req: Request, res: Response) => {
     const gadgetId = req.params.id;
-    const gadget = await prismaClient.gadgets.findUnique({
+    const gadget = await prismaClient.gadget.findUnique({
       where: { id: gadgetId },
     });
     if (!gadget) throw new ApiError(400, 'No such Gadget Exists', 'DB_004');
@@ -145,7 +145,7 @@ const requestSelfDestructSequence = asyncHandler(
     const code: number = generateOtp();
     const expiresAt: Date = new Date(Date.now() + +10 * 60 * 1000);
 
-    const updated = await prismaClient.gadgets.update({
+    const updated = await prismaClient.gadget.update({
       where: { id: gadgetId },
       data: {
         confirmationCode: code,
