@@ -7,7 +7,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "prisma generate && tsx scripts/copy-generated.ts && tsc --build",
+    "build": "prisma migrate deploy && tsx scripts/copy-generated.ts && tsc --build",
     "noOutput": "tsc --noEmit",
     "start": "node dist/src/index.js",
     "dev": "nodemon --exec tsx src/index.ts",

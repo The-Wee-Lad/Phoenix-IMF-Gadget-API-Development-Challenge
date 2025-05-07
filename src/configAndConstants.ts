@@ -4,6 +4,8 @@ dotenv.config({
   path: './.env',
 });
 
+console.log("Environment : ", process.env.NODE_ENV);
+
 // Configuration Types
 interface Config {
   DATABASE_URL: string;

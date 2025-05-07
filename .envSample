@@ -4,7 +4,6 @@ NODE_ENV=development
 
 # Database Configuration
 DATABASE_URL=postgresql://postgres:your_password@localhost:5432/imf
-DATABASE_URL_PROD=''
 
 # JWT Tokens
 ACCESS_TOKEN_KEY=your_access_token_secret

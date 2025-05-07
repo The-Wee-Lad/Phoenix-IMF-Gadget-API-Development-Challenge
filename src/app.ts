@@ -15,7 +15,10 @@ import { userRouter } from './routes/user.route.js';
 import { gadgetRouter } from './routes/gadget.route.js';
 import { ApiError, ApiResponse } from './utils/index.js';
 
-app.get(config.BASE_API_URL + '/healthCheck', (req, res) => {
+app.use(config.BASE_API_URL + '/healthCheck', (req, res) => {
+  res.status(200).json(new ApiResponse(200, 'Server Alive!', {}));
+});
+app.use('/healthCheck', (req, res) => {
   res.status(200).json(new ApiResponse(200, 'Server Alive!', {}));
 });
 app.use(config.BASE_API_URL + '/user', userRouter);
