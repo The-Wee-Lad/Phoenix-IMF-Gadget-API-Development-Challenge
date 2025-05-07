@@ -1,0 +1,37 @@
+| Code       | Description                          |
+| ---------- | ------------------------------------ |
+| `AUTH_001` | Missing authentication token         |
+| `AUTH_002` | Invalid token                        |
+| `AUTH_003` | Expired token                        |
+| `AUTH_004` | Unauthorized access                  |
+| `AUTH_005` | Access denied – insufficient role    |
+| `AUTH_006` | Login failed – incorrect credentials |
+| `AUTH_007` | Account not verified                 |
+| `AUTH_008` | Refresh token invalid or expired     |
+| `AUTH_009` | Session expired                      |
+| `AUTH_010` | Token blacklisted                    |
+| `AUTH_011` | All fields are required                  |
+| `AUTH_012` | Username already in use                  |
+| `AUTH_013` | Email already in use                     |
+| `AUTH_014` | Invalid email format                     |
+| `AUTH_015` | Password does not meet security criteria |
+| `AUTH_016` | User already registered                  |
+| `AUTH_017` | Terms and conditions not accepted        |
+| `AUTH_018` | Weak password                            |
+| `AUTH_019` | Email verification required              |
+| `AUTH_020` | Invalid password                         |
+| `AUTH_021` | Delete Failed, Unauthorised              |
+
+
+
+| **Code** | **Description**                                                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `DB_001` | **Database Connection Failed** – When the application cannot connect to the database.                                              |
+| `DB_002` | **Database Timeout** – When a database operation takes longer than expected or times out.                                          |
+| `DB_003` | **Query Execution Failed** – When a query execution fails due to an error.                                                         |
+| `DB_004` | **Record Not Found** – When a query does not return any results (e.g., trying to find a user that doesn’t exist).                  |
+| `DB_005` | **Duplicate Record** – When attempting to insert a record that already exists in the database (e.g., duplicate email or username). |
+| `DB_006` | **Foreign Key Constraint Violation** – When a foreign key constraint is violated during a database operation.                      |
+| `DB_007` | **Database Migration Failed** – When a database migration fails.                                                                   |
+| `DB_008` | **Invalid Database Query** – When the database query is malformed or invalid.                                                      |
+| `DB_009` | **Can't make changes**

@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String?  @db.VarChar(255)
+  username     String   @unique @db.VarChar(255)
+  email        String   @unique @db.VarChar(255)
+  password     String   @db.VarChar(511)
+  refreshToken String?  @db.VarChar(511)
+  createdAt    DateTime @default(now()) @db.Timestamp(6)
+  updatedAt    DateTime @updatedAt @db.Timestamp(6)
+}
+
+model Gadget {
+  id               String    @id @default(uuid())
+  name             String    @db.VarChar(511)
+  status           STATUS    @default(Available)
+  decommissonedAt  DateTime?
+  createdAt        DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt        DateTime  @updatedAt @db.Timestamp(6)
+  confirmationCode Int?
+  expiresAt        DateTime?
+}
+
+// ENUMS should be in Upercase but assignment specified otherwise.
+enum STATUS {
+  Available
+  Deployed
+  Destroyed
+  Decommissioned
+}
