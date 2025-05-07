@@ -1,0 +1,16 @@
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# Database Configuration
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/imf
+DATABASE_URL_PROD=''
+
+# JWT Tokens
+ACCESS_TOKEN_KEY=your_access_token_secret
+REFRESH_TOKEN_KEY=your_refresh_token_secret
+ACCESS_TOKEN_EXPIRES=1h
+REFRESH_TOKEN_EXPIRES=30d
+
+# API Prefix
+BASE_API_URL=/phoenix-imf/api/v1
