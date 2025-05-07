@@ -17,7 +17,7 @@ try {
   fs.copySync(source, destination);
   console.log('Generated file Copy complete');
 } catch (error) {
-  console.log('Generated file Copy failed ');
+  console.error('Generated file Copy failed ERROR : ', error);
   process.exit(-1);
 }
 
